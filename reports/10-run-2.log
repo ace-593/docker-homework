@@ -1,0 +1,202 @@
+Project: dockerhw-check-1795359934-82340
+Docker Compose version v5.6.0
+
+1: isolated project with empty storage
+ Image dockerhw-check-1795359934-82340-app Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 558B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 455B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/python:3.13-slim
+#3 DONE 0.7s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 122B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 94B done
+#5 DONE 0.0s
+
+#6 [1/5] FROM docker.io/library/python:3.13-slim@sha256:e48f59cdba69a3cbd9ed2cf0f348d90d45a8d350d98134cf1070bc106ee9ed90
+#6 resolve docker.io/library/python:3.13-slim@sha256:e48f59cdba69a3cbd9ed2cf0f348d90d45a8d350d98134cf1070bc106ee9ed90 done
+#6 DONE 0.0s
+
+#7 [2/5] WORKDIR /app
+#7 CACHED
+
+#8 [3/5] COPY app/requirements.txt .
+#8 CACHED
+
+#9 [4/5] RUN pip install --no-cache-dir --disable-pip-version-check -r requirements.txt     && groupadd --gid 10001 app     && useradd --uid 10001 --gid app --no-create-home app     && mkdir /data     && chown app:app /data
+#9 CACHED
+
+#10 [5/5] COPY app/app.py .
+#10 CACHED
+
+#11 exporting to image
+#11 exporting layers done
+#11 exporting manifest sha256:9fd6f18344d34aa4024b6cec33db9048d5ad3c4efe940fb6d81c5219da5cf90e done
+#11 exporting config sha256:9b33fb7abad9283885926fe72dcf5972be55f30dbe5ffc6b0cd4d5cc35eed4af done
+#11 exporting attestation manifest sha256:7786318ad29eba18be6ee8df45873f805e310f5d2c6fb9384b1b5b95f3482677 done
+#11 exporting manifest list sha256:b74ba4dd59d93d7e2c09504d8e89bed850ff969dfb9f7e487fb5d5b1571fee2e done
+#11 naming to docker.io/library/dockerhw-check-1795359934-82340-app:latest done
+#11 unpacking to docker.io/library/dockerhw-check-1795359934-82340-app:latest
+#11 unpacking to docker.io/library/dockerhw-check-1795359934-82340-app:latest 0.9s done
+#11 DONE 1.0s
+
+#12 resolving provenance for metadata file
+#12 DONE 0.0s
+ Image dockerhw-check-1795359934-82340-app Built 
+ Network dockerhw-check-1795359934-82340_default Creating 
+ Volume dockerhw-check-1795359934-82340_redis_data Creating 
+ Volume dockerhw-check-1795359934-82340_redis_data Creating 
+ Network dockerhw-check-1795359934-82340_default Creating 
+ Volume dockerhw-check-1795359934-82340_redis_data Created 
+ Volume dockerhw-check-1795359934-82340_redis_data Created 
+ Network dockerhw-check-1795359934-82340_default Created 
+ Network dockerhw-check-1795359934-82340_default Created 
+ Container dockerhw-check-1795359934-82340-redis-1 Creating 
+ Container dockerhw-check-1795359934-82340-redis-1 Created 
+ Container dockerhw-check-1795359934-82340-app-1 Creating 
+ Container dockerhw-check-1795359934-82340-app-1 Created 
+ Container dockerhw-check-1795359934-82340-redis-1 Starting 
+ Container dockerhw-check-1795359934-82340-redis-1 Started 
+ Container dockerhw-check-1795359934-82340-redis-1 Waiting 
+ Container dockerhw-check-1795359934-82340-redis-1 Healthy 
+ Container dockerhw-check-1795359934-82340-app-1 Starting 
+ Container dockerhw-check-1795359934-82340-app-1 Started 
+ Container dockerhw-check-1795359934-82340-app-1 Waiting 
+ Container dockerhw-check-1795359934-82340-redis-1 Waiting 
+ Container dockerhw-check-1795359934-82340-redis-1 Healthy 
+ Container dockerhw-check-1795359934-82340-app-1 Healthy 
+GET / -> 200 {"greeting": "Recovery check", "count": 0, "hostname": "a2d2c8139e84", "storage": "redis"}
+
+2: increment counter to N=3
+POST /increment -> 200 {"greeting": "Recovery check", "count": 1, "hostname": "a2d2c8139e84", "storage": "redis"}
+POST /increment -> 200 {"greeting": "Recovery check", "count": 2, "hostname": "a2d2c8139e84", "storage": "redis"}
+POST /increment -> 200 {"greeting": "Recovery check", "count": 3, "hostname": "a2d2c8139e84", "storage": "redis"}
+GET / -> 200 {"greeting": "Recovery check", "count": 3, "hostname": "a2d2c8139e84", "storage": "redis"}
+
+3: recreate only app
+ Container dockerhw-check-1795359934-82340-app-1 Recreate 
+ Container dockerhw-check-1795359934-82340-app-1 Recreated 
+ Container dockerhw-check-1795359934-82340-app-1 Starting 
+ Container dockerhw-check-1795359934-82340-app-1 Started 
+ Container dockerhw-check-1795359934-82340-app-1 Waiting 
+ Container dockerhw-check-1795359934-82340-app-1 Healthy 
+GET / -> 200 {"greeting": "Recovery check", "count": 3, "hostname": "33bac08304bd", "storage": "redis"}
+
+4a: down/up without deleting volumes
+ Container dockerhw-check-1795359934-82340-app-1 Stopping 
+ Container dockerhw-check-1795359934-82340-app-1 Stopped 
+ Container dockerhw-check-1795359934-82340-app-1 Removing 
+ Container dockerhw-check-1795359934-82340-app-1 Removed 
+ Container dockerhw-check-1795359934-82340-redis-1 Stopping 
+ Container dockerhw-check-1795359934-82340-redis-1 Stopped 
+ Container dockerhw-check-1795359934-82340-redis-1 Removing 
+ Container dockerhw-check-1795359934-82340-redis-1 Removed 
+ Network dockerhw-check-1795359934-82340_default Removing 
+ Network dockerhw-check-1795359934-82340_default Removed 
+ Network dockerhw-check-1795359934-82340_default Creating 
+ Network dockerhw-check-1795359934-82340_default Creating 
+ Network dockerhw-check-1795359934-82340_default Created 
+ Network dockerhw-check-1795359934-82340_default Created 
+ Container dockerhw-check-1795359934-82340-redis-1 Creating 
+ Container dockerhw-check-1795359934-82340-redis-1 Created 
+ Container dockerhw-check-1795359934-82340-app-1 Creating 
+ Container dockerhw-check-1795359934-82340-app-1 Created 
+ Container dockerhw-check-1795359934-82340-redis-1 Starting 
+ Container dockerhw-check-1795359934-82340-redis-1 Started 
+ Container dockerhw-check-1795359934-82340-redis-1 Waiting 
+ Container dockerhw-check-1795359934-82340-redis-1 Healthy 
+ Container dockerhw-check-1795359934-82340-app-1 Starting 
+ Container dockerhw-check-1795359934-82340-app-1 Started 
+ Container dockerhw-check-1795359934-82340-redis-1 Waiting 
+ Container dockerhw-check-1795359934-82340-app-1 Waiting 
+ Container dockerhw-check-1795359934-82340-redis-1 Healthy 
+ Container dockerhw-check-1795359934-82340-app-1 Healthy 
+GET / -> 200 {"greeting": "Recovery check", "count": 3, "hostname": "184b873cc69f", "storage": "redis"}
+
+4b: Redis outage and automatic recovery
+ Container dockerhw-check-1795359934-82340-redis-1 Stopping 
+ Container dockerhw-check-1795359934-82340-redis-1 Stopped 
+GET /healthz -> 200 {"status": "alive"}
+GET /readyz -> 503 {"error": "storage_unavailable"}
+POST /increment -> 503 {"error": "storage_unavailable"}
+ Container dockerhw-check-1795359934-82340-redis-1 Starting 
+ Container dockerhw-check-1795359934-82340-redis-1 Started 
+GET / -> 200 {"greeting": "Recovery check", "count": 3, "hostname": "184b873cc69f", "storage": "redis"}
+POST /increment -> 200 {"greeting": "Recovery check", "count": 4, "hostname": "184b873cc69f", "storage": "redis"}
+App recovered without restart.
+
+application limits
+UID=10001; read_only, RAM bytes, CPU nanocores: true 268435456 1000000000
+
+5: consistent external backup
+ Container dockerhw-check-1795359934-82340-app-1 Stopping 
+ Container dockerhw-check-1795359934-82340-app-1 Stopped 
+ Container dockerhw-check-1795359934-82340-redis-1 Stopping 
+ Container dockerhw-check-1795359934-82340-redis-1 Stopped 
+Backup: /private/tmp/docker-homework.PinpJu/backups/dockerhw-check-1795359934-82340.tar
+
+6: delete original project including volumes
+ Container dockerhw-check-1795359934-82340-app-1 Stopping 
+ Container dockerhw-check-1795359934-82340-app-1 Stopped 
+ Container dockerhw-check-1795359934-82340-app-1 Removing 
+ Container dockerhw-check-1795359934-82340-app-1 Removed 
+ Container dockerhw-check-1795359934-82340-redis-1 Stopping 
+ Container dockerhw-check-1795359934-82340-redis-1 Stopped 
+ Container dockerhw-check-1795359934-82340-redis-1 Removing 
+ Container dockerhw-check-1795359934-82340-redis-1 Removed 
+ Volume dockerhw-check-1795359934-82340_redis_data Removing 
+ Network dockerhw-check-1795359934-82340_default Removing 
+ Volume dockerhw-check-1795359934-82340_redis_data Removed 
+ Network dockerhw-check-1795359934-82340_default Removed 
+Original project volumes removed.
+
+restore backup into a new volume
+ Volume dockerhw-check-1795359934-82340_redis_data Creating 
+ Volume dockerhw-check-1795359934-82340_redis_data Creating 
+ Network dockerhw-check-1795359934-82340_default Creating 
+ Network dockerhw-check-1795359934-82340_default Creating 
+ Volume dockerhw-check-1795359934-82340_redis_data Created 
+ Volume dockerhw-check-1795359934-82340_redis_data Created 
+ Network dockerhw-check-1795359934-82340_default Created 
+ Network dockerhw-check-1795359934-82340_default Created 
+ Container dockerhw-check-1795359934-82340-redis-1 Creating 
+ Container dockerhw-check-1795359934-82340-redis-1 Created 
+ Container dockerhw-check-1795359934-82340-app-1 Creating 
+ Container dockerhw-check-1795359934-82340-app-1 Created 
+ Container dockerhw-check-1795359934-82340-redis-1 Starting 
+ Container dockerhw-check-1795359934-82340-redis-1 Started 
+ Container dockerhw-check-1795359934-82340-redis-1 Waiting 
+ Container dockerhw-check-1795359934-82340-redis-1 Healthy 
+ Container dockerhw-check-1795359934-82340-app-1 Starting 
+ Container dockerhw-check-1795359934-82340-app-1 Started 
+ Container dockerhw-check-1795359934-82340-redis-1 Waiting 
+ Container dockerhw-check-1795359934-82340-app-1 Waiting 
+ Container dockerhw-check-1795359934-82340-redis-1 Healthy 
+ Container dockerhw-check-1795359934-82340-app-1 Healthy 
+GET / -> 200 {"greeting": "Recovery check", "count": 4, "hostname": "3ed63854de6c", "storage": "redis"}
+POST /increment -> 200 {"greeting": "Recovery check", "count": 5, "hostname": "3ed63854de6c", "storage": "redis"}
+
+PASS: all checks and backup restoration completed.
+ Container dockerhw-check-1795359934-82340-app-1 Stopping 
+ Container dockerhw-check-1795359934-82340-app-1 Stopped 
+ Container dockerhw-check-1795359934-82340-app-1 Removing 
+ Container dockerhw-check-1795359934-82340-app-1 Removed 
+ Container dockerhw-check-1795359934-82340-redis-1 Stopping 
+ Container dockerhw-check-1795359934-82340-redis-1 Stopped 
+ Container dockerhw-check-1795359934-82340-redis-1 Removing 
+ Container dockerhw-check-1795359934-82340-redis-1 Removed 
+ Network dockerhw-check-1795359934-82340_default Removing 
+ Volume dockerhw-check-1795359934-82340_redis_data Removing 
+ Volume dockerhw-check-1795359934-82340_redis_data Removed 
+ Image dockerhw-check-1795359934-82340-app:latest Removing 
+ Network dockerhw-check-1795359934-82340_default Removed 
+ Image dockerhw-check-1795359934-82340-app:latest Removed 
