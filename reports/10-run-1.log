@@ -1,0 +1,242 @@
+Project: dockerhw-check-1795359886-81771
+Docker Compose version v5.6.0
+
+1: isolated project with empty storage
+ Image redis:7.4-alpine Pulling 
+ 16cda2556898 Pulling fs layer 0B
+ 54abef31ddd9 Pulling fs layer 0B
+ 4f4fb700ef54 Pulling fs layer 0B
+ fea5b91588ca Pulling fs layer 0B
+ e8978eba2bb2 Pulling fs layer 0B
+ 8fe75981dbac Pulling fs layer 0B
+ fb602ba0b128 Pulling fs layer 0B
+ 4f4fb700ef54 Already exists 0B
+ 16cda2556898 Download complete 0B
+ e8978eba2bb2 Download complete 0B
+ fb602ba0b128 Download complete 0B
+ fea5b91588ca Downloading 2.097MB
+ fea5b91588ca Downloading 3.146MB
+ fea5b91588ca Download complete 0B
+ 8fe75981dbac Download complete 0B
+ fb602ba0b128 Extracting 1B
+ fea5b91588ca Pull complete 0B
+ a99ab7f50347 Download complete 0B
+ fb602ba0b128 Pull complete 0B
+ 8fe75981dbac Pull complete 0B
+ 54abef31ddd9 Downloading 1.049MB
+ 54abef31ddd9 Downloading 3.146MB
+ 54abef31ddd9 Downloading 4.194MB
+ 54abef31ddd9 Downloading 4.194MB
+ 54abef31ddd9 Downloading 6.291MB
+ 4704a97c8705 Downloading 262.1kB
+ 54abef31ddd9 Downloading 7.34MB
+ 4704a97c8705 Download complete 0B
+ 54abef31ddd9 Downloading 9.437MB
+ 54abef31ddd9 Downloading 10.49MB
+ 54abef31ddd9 Downloading 10.49MB
+ 54abef31ddd9 Download complete 0B
+ 54abef31ddd9 Extracting 1B
+ 54abef31ddd9 Extracting 1B
+ 4f4fb700ef54 Pull complete 0B
+ 16cda2556898 Pull complete 0B
+ e8978eba2bb2 Pull complete 0B
+ 54abef31ddd9 Pull complete 0B
+ Image redis:7.4-alpine Pulled 
+ Image dockerhw-check-1795359886-81771-app Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 558B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 455B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/python:3.13-slim
+#3 DONE 0.6s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 122B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 94B done
+#5 DONE 0.0s
+
+#6 [1/5] FROM docker.io/library/python:3.13-slim@sha256:e48f59cdba69a3cbd9ed2cf0f348d90d45a8d350d98134cf1070bc106ee9ed90
+#6 resolve docker.io/library/python:3.13-slim@sha256:e48f59cdba69a3cbd9ed2cf0f348d90d45a8d350d98134cf1070bc106ee9ed90 done
+#6 DONE 0.0s
+
+#7 [2/5] WORKDIR /app
+#7 CACHED
+
+#8 [3/5] COPY app/requirements.txt .
+#8 CACHED
+
+#9 [4/5] RUN pip install --no-cache-dir --disable-pip-version-check -r requirements.txt     && groupadd --gid 10001 app     && useradd --uid 10001 --gid app --no-create-home app     && mkdir /data     && chown app:app /data
+#9 CACHED
+
+#10 [5/5] COPY app/app.py .
+#10 CACHED
+
+#11 exporting to image
+#11 exporting layers done
+#11 exporting manifest sha256:1066c9c2aa6ad5ba6e0d943abc32db6f696d52985092787546e171a1122f92b0 done
+#11 exporting config sha256:25077452769152c1e8a712b2789da21fa75ef5e7e0b746c81f13e33032ff5fda done
+#11 exporting attestation manifest sha256:e3491717d9db2f710f8b497c22e0482289c2dfba94f1ab5aee95e3126f6e48d4 done
+#11 exporting manifest list sha256:e3664ca59cccb31b559643d99d5f1cd6c226d9d510d638e8cf00e9cdb0021239 done
+#11 naming to docker.io/library/dockerhw-check-1795359886-81771-app:latest done
+#11 unpacking to docker.io/library/dockerhw-check-1795359886-81771-app:latest
+#11 unpacking to docker.io/library/dockerhw-check-1795359886-81771-app:latest 0.9s done
+#11 DONE 1.0s
+
+#12 resolving provenance for metadata file
+#12 DONE 0.0s
+ Image dockerhw-check-1795359886-81771-app Built 
+ Network dockerhw-check-1795359886-81771_default Creating 
+ Volume dockerhw-check-1795359886-81771_redis_data Creating 
+ Network dockerhw-check-1795359886-81771_default Creating 
+ Volume dockerhw-check-1795359886-81771_redis_data Creating 
+ Volume dockerhw-check-1795359886-81771_redis_data Created 
+ Volume dockerhw-check-1795359886-81771_redis_data Created 
+ Network dockerhw-check-1795359886-81771_default Created 
+ Network dockerhw-check-1795359886-81771_default Created 
+ Container dockerhw-check-1795359886-81771-redis-1 Creating 
+ Container dockerhw-check-1795359886-81771-redis-1 Created 
+ Container dockerhw-check-1795359886-81771-app-1 Creating 
+ Container dockerhw-check-1795359886-81771-app-1 Created 
+ Container dockerhw-check-1795359886-81771-redis-1 Starting 
+ Container dockerhw-check-1795359886-81771-redis-1 Started 
+ Container dockerhw-check-1795359886-81771-redis-1 Waiting 
+ Container dockerhw-check-1795359886-81771-redis-1 Healthy 
+ Container dockerhw-check-1795359886-81771-app-1 Starting 
+ Container dockerhw-check-1795359886-81771-app-1 Started 
+ Container dockerhw-check-1795359886-81771-app-1 Waiting 
+ Container dockerhw-check-1795359886-81771-redis-1 Waiting 
+ Container dockerhw-check-1795359886-81771-redis-1 Healthy 
+ Container dockerhw-check-1795359886-81771-app-1 Healthy 
+GET / -> 200 {"greeting": "Recovery check", "count": 0, "hostname": "466c8c426033", "storage": "redis"}
+
+2: increment counter to N=3
+POST /increment -> 200 {"greeting": "Recovery check", "count": 1, "hostname": "466c8c426033", "storage": "redis"}
+POST /increment -> 200 {"greeting": "Recovery check", "count": 2, "hostname": "466c8c426033", "storage": "redis"}
+POST /increment -> 200 {"greeting": "Recovery check", "count": 3, "hostname": "466c8c426033", "storage": "redis"}
+GET / -> 200 {"greeting": "Recovery check", "count": 3, "hostname": "466c8c426033", "storage": "redis"}
+
+3: recreate only app
+ Container dockerhw-check-1795359886-81771-app-1 Recreate 
+ Container dockerhw-check-1795359886-81771-app-1 Recreated 
+ Container dockerhw-check-1795359886-81771-app-1 Starting 
+ Container dockerhw-check-1795359886-81771-app-1 Started 
+ Container dockerhw-check-1795359886-81771-app-1 Waiting 
+ Container dockerhw-check-1795359886-81771-app-1 Healthy 
+GET / -> 200 {"greeting": "Recovery check", "count": 3, "hostname": "2186df269154", "storage": "redis"}
+
+4a: down/up without deleting volumes
+ Container dockerhw-check-1795359886-81771-app-1 Stopping 
+ Container dockerhw-check-1795359886-81771-app-1 Stopped 
+ Container dockerhw-check-1795359886-81771-app-1 Removing 
+ Container dockerhw-check-1795359886-81771-app-1 Removed 
+ Container dockerhw-check-1795359886-81771-redis-1 Stopping 
+ Container dockerhw-check-1795359886-81771-redis-1 Stopped 
+ Container dockerhw-check-1795359886-81771-redis-1 Removing 
+ Container dockerhw-check-1795359886-81771-redis-1 Removed 
+ Network dockerhw-check-1795359886-81771_default Removing 
+ Network dockerhw-check-1795359886-81771_default Removed 
+ Network dockerhw-check-1795359886-81771_default Creating 
+ Network dockerhw-check-1795359886-81771_default Creating 
+ Network dockerhw-check-1795359886-81771_default Created 
+ Network dockerhw-check-1795359886-81771_default Created 
+ Container dockerhw-check-1795359886-81771-redis-1 Creating 
+ Container dockerhw-check-1795359886-81771-redis-1 Created 
+ Container dockerhw-check-1795359886-81771-app-1 Creating 
+ Container dockerhw-check-1795359886-81771-app-1 Created 
+ Container dockerhw-check-1795359886-81771-redis-1 Starting 
+ Container dockerhw-check-1795359886-81771-redis-1 Started 
+ Container dockerhw-check-1795359886-81771-redis-1 Waiting 
+ Container dockerhw-check-1795359886-81771-redis-1 Healthy 
+ Container dockerhw-check-1795359886-81771-app-1 Starting 
+ Container dockerhw-check-1795359886-81771-app-1 Started 
+ Container dockerhw-check-1795359886-81771-app-1 Waiting 
+ Container dockerhw-check-1795359886-81771-redis-1 Waiting 
+ Container dockerhw-check-1795359886-81771-redis-1 Healthy 
+ Container dockerhw-check-1795359886-81771-app-1 Healthy 
+GET / -> 200 {"greeting": "Recovery check", "count": 3, "hostname": "425f8ac90cef", "storage": "redis"}
+
+4b: Redis outage and automatic recovery
+ Container dockerhw-check-1795359886-81771-redis-1 Stopping 
+ Container dockerhw-check-1795359886-81771-redis-1 Stopped 
+GET /healthz -> 200 {"status": "alive"}
+GET /readyz -> 503 {"error": "storage_unavailable"}
+POST /increment -> 503 {"error": "storage_unavailable"}
+ Container dockerhw-check-1795359886-81771-redis-1 Starting 
+ Container dockerhw-check-1795359886-81771-redis-1 Started 
+GET / -> 200 {"greeting": "Recovery check", "count": 3, "hostname": "425f8ac90cef", "storage": "redis"}
+POST /increment -> 200 {"greeting": "Recovery check", "count": 4, "hostname": "425f8ac90cef", "storage": "redis"}
+App recovered without restart.
+
+application limits
+UID=10001; read_only, RAM bytes, CPU nanocores: true 268435456 1000000000
+
+5: consistent external backup
+ Container dockerhw-check-1795359886-81771-app-1 Stopping 
+ Container dockerhw-check-1795359886-81771-app-1 Stopped 
+ Container dockerhw-check-1795359886-81771-redis-1 Stopping 
+ Container dockerhw-check-1795359886-81771-redis-1 Stopped 
+Backup: /private/tmp/docker-homework.PinpJu/backups/dockerhw-check-1795359886-81771.tar
+
+6: delete original project including volumes
+ Container dockerhw-check-1795359886-81771-app-1 Stopping 
+ Container dockerhw-check-1795359886-81771-app-1 Stopped 
+ Container dockerhw-check-1795359886-81771-app-1 Removing 
+ Container dockerhw-check-1795359886-81771-app-1 Removed 
+ Container dockerhw-check-1795359886-81771-redis-1 Stopping 
+ Container dockerhw-check-1795359886-81771-redis-1 Stopped 
+ Container dockerhw-check-1795359886-81771-redis-1 Removing 
+ Container dockerhw-check-1795359886-81771-redis-1 Removed 
+ Volume dockerhw-check-1795359886-81771_redis_data Removing 
+ Network dockerhw-check-1795359886-81771_default Removing 
+ Volume dockerhw-check-1795359886-81771_redis_data Removed 
+ Network dockerhw-check-1795359886-81771_default Removed 
+Original project volumes removed.
+
+restore backup into a new volume
+ Network dockerhw-check-1795359886-81771_default Creating 
+ Volume dockerhw-check-1795359886-81771_redis_data Creating 
+ Network dockerhw-check-1795359886-81771_default Creating 
+ Volume dockerhw-check-1795359886-81771_redis_data Creating 
+ Volume dockerhw-check-1795359886-81771_redis_data Created 
+ Volume dockerhw-check-1795359886-81771_redis_data Created 
+ Network dockerhw-check-1795359886-81771_default Created 
+ Network dockerhw-check-1795359886-81771_default Created 
+ Container dockerhw-check-1795359886-81771-redis-1 Creating 
+ Container dockerhw-check-1795359886-81771-redis-1 Created 
+ Container dockerhw-check-1795359886-81771-app-1 Creating 
+ Container dockerhw-check-1795359886-81771-app-1 Created 
+ Container dockerhw-check-1795359886-81771-redis-1 Starting 
+ Container dockerhw-check-1795359886-81771-redis-1 Started 
+ Container dockerhw-check-1795359886-81771-redis-1 Waiting 
+ Container dockerhw-check-1795359886-81771-redis-1 Healthy 
+ Container dockerhw-check-1795359886-81771-app-1 Starting 
+ Container dockerhw-check-1795359886-81771-app-1 Started 
+ Container dockerhw-check-1795359886-81771-app-1 Waiting 
+ Container dockerhw-check-1795359886-81771-redis-1 Waiting 
+ Container dockerhw-check-1795359886-81771-redis-1 Healthy 
+ Container dockerhw-check-1795359886-81771-app-1 Healthy 
+GET / -> 200 {"greeting": "Recovery check", "count": 4, "hostname": "0699ecc39407", "storage": "redis"}
+POST /increment -> 200 {"greeting": "Recovery check", "count": 5, "hostname": "0699ecc39407", "storage": "redis"}
+
+PASS: all checks and backup restoration completed.
+ Container dockerhw-check-1795359886-81771-app-1 Stopping 
+ Container dockerhw-check-1795359886-81771-app-1 Stopped 
+ Container dockerhw-check-1795359886-81771-app-1 Removing 
+ Container dockerhw-check-1795359886-81771-app-1 Removed 
+ Container dockerhw-check-1795359886-81771-redis-1 Stopping 
+ Container dockerhw-check-1795359886-81771-redis-1 Stopped 
+ Container dockerhw-check-1795359886-81771-redis-1 Removing 
+ Container dockerhw-check-1795359886-81771-redis-1 Removed 
+ Volume dockerhw-check-1795359886-81771_redis_data Removing 
+ Network dockerhw-check-1795359886-81771_default Removing 
+ Volume dockerhw-check-1795359886-81771_redis_data Removed 
+ Image dockerhw-check-1795359886-81771-app:latest Removing 
+ Network dockerhw-check-1795359886-81771_default Removed 
+ Image dockerhw-check-1795359886-81771-app:latest Removed 
