@@ -1,0 +1,36 @@
+services:
+  app:
+    build: .
+    environment:
+      PORT: "8000"
+      GREETING: ${GREETING:-Hello, Docker!}
+      STORAGE: redis
+      REDIS_URL: redis://redis:6379/0
+    ports:
+      - "127.0.0.1:${HOST_PORT:-8080}:8000"
+    depends_on:
+      redis:
+        condition: service_healthy
+    read_only: true
+    mem_limit: 256m
+    cpus: 1.0
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/readyz', timeout=2).read()"]
+      interval: 2s
+      timeout: 3s
+      retries: 15
+      start_period: 3s
+
+  redis:
+    image: redis:7.4-alpine
+    command: ["redis-server", "--appendonly", "yes", "--appendfsync", "always"]
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 2s
+      timeout: 3s
+      retries: 15
+
+volumes:
+  redis_data:
