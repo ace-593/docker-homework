@@ -1,0 +1,165 @@
+LEVEL 4: docker build / docker run
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 455B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/python:3.13-slim
+#2 DONE 0.6s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 122B done
+#3 DONE 0.0s
+
+#4 [internal] load build context
+#4 transferring context: 5.95kB done
+#4 DONE 0.0s
+
+#5 [1/5] FROM docker.io/library/python:3.13-slim@sha256:e48f59cdba69a3cbd9ed2cf0f348d90d45a8d350d98134cf1070bc106ee9ed90
+#5 resolve docker.io/library/python:3.13-slim@sha256:e48f59cdba69a3cbd9ed2cf0f348d90d45a8d350d98134cf1070bc106ee9ed90 0.0s done
+#5 DONE 0.0s
+
+#6 [2/5] WORKDIR /app
+#6 CACHED
+
+#7 [3/5] COPY app/requirements.txt .
+#7 DONE 0.0s
+
+#8 [4/5] RUN pip install --no-cache-dir --disable-pip-version-check -r requirements.txt     && groupadd --gid 10001 app     && useradd --uid 10001 --gid app --no-create-home app     && mkdir /data     && chown app:app /data
+#8 1.346 Collecting redis==5.2.1 (from -r requirements.txt (line 1))
+#8 16.59   Downloading redis-5.2.1-py3-none-any.whl.metadata (9.1 kB)
+#8 16.72 Downloading redis-5.2.1-py3-none-any.whl (261 kB)
+#8 17.69 Installing collected packages: redis
+#8 17.83 Successfully installed redis-5.2.1
+#8 17.83 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+#8 DONE 17.9s
+
+#9 [5/5] COPY app/app.py .
+#9 DONE 0.0s
+
+#10 exporting to image
+#10 exporting layers 0.1s done
+#10 exporting manifest sha256:36f1fef1618e823f13d2fd733e9411850aba6ddc2eff72eb582a49c31aaa09c4 done
+#10 exporting config sha256:7a5a9e51166e44fdef2813d3958e21fa02758effdc9cc3d9ed23d4839ef6c8c4
+#10 exporting config sha256:7a5a9e51166e44fdef2813d3958e21fa02758effdc9cc3d9ed23d4839ef6c8c4 done
+#10 exporting attestation manifest sha256:66540df4f34a521f03c96061769e17f8e507b30cf5b32fdebd63dfb287fd55dd done
+#10 exporting manifest list sha256:f62338645279f90be56d5f75571a1645aa1503f7aeed2667b732b8725df95c08 done
+#10 naming to docker.io/library/dockerhw-basics-1795359832-81264-single:latest done
+#10 unpacking to docker.io/library/dockerhw-basics-1795359832-81264-single:latest
+#10 unpacking to docker.io/library/dockerhw-basics-1795359832-81264-single:latest 0.9s done
+#10 DONE 1.0s
+7ea6dc120cbee24cbd5668988f025d081f6140e7f9727ef9be9d385103d4e5d6
+
+GET /
+{'greeting': 'Single container check', 'count': 0, 'hostname': '7ea6dc120cbe', 'storage': 'sqlite'}
+POST /increment
+{'greeting': 'Single container check', 'count': 1, 'hostname': '7ea6dc120cbe', 'storage': 'sqlite'}
+docker logs
+2026-11-22 15:04:13,145 listening port=8000 storage=sqlite
+2026-11-22 15:04:14,036 http 172.17.0.1 "GET /readyz HTTP/1.1" 200 -
+2026-11-22 15:04:14,052 http 172.17.0.1 "GET / HTTP/1.1" 200 -
+2026-11-22 15:04:14,171 http 172.17.0.1 "POST /increment HTTP/1.1" 200 -
+dockerhw-basics-1795359832-81264-single
+
+LEVEL 6: named SQLite volume
+ Image dockerhw-basics-1795359832-81264-app Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 560B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 455B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/python:3.13-slim
+#3 DONE 0.3s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 122B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 94B done
+#5 DONE 0.0s
+
+#6 [1/5] FROM docker.io/library/python:3.13-slim@sha256:e48f59cdba69a3cbd9ed2cf0f348d90d45a8d350d98134cf1070bc106ee9ed90
+#6 resolve docker.io/library/python:3.13-slim@sha256:e48f59cdba69a3cbd9ed2cf0f348d90d45a8d350d98134cf1070bc106ee9ed90 done
+#6 DONE 0.0s
+
+#7 [3/5] COPY app/requirements.txt .
+#7 CACHED
+
+#8 [4/5] RUN pip install --no-cache-dir --disable-pip-version-check -r requirements.txt     && groupadd --gid 10001 app     && useradd --uid 10001 --gid app --no-create-home app     && mkdir /data     && chown app:app /data
+#8 CACHED
+
+#9 [2/5] WORKDIR /app
+#9 CACHED
+
+#10 [5/5] COPY app/app.py .
+#10 CACHED
+
+#11 exporting to image
+#11 exporting layers done
+#11 exporting manifest sha256:18048731c8715cc7ccd8179f5e7a39ec97150741df224d5b6d27689a17c581b4 done
+#11 exporting config sha256:ff0d944e9a95f62f74fbe2363477bb13ae1a98e6627f2d9a8417dcd4826c3ec8 done
+#11 exporting attestation manifest sha256:ee8a85d73866a80da19a653a9ec733f70c0affa5cafddfd830d3032c31d89411 done
+#11 exporting manifest list sha256:3a9b74e5e6329e54ce1ff2c69dafca46d80317567f92943bbca37fa453676641 done
+#11 naming to docker.io/library/dockerhw-basics-1795359832-81264-app:latest done
+#11 unpacking to docker.io/library/dockerhw-basics-1795359832-81264-app:latest done
+#11 DONE 0.0s
+
+#12 resolving provenance for metadata file
+#12 DONE 0.0s
+ Image dockerhw-basics-1795359832-81264-app Built 
+ Volume dockerhw-basics-1795359832-81264_sqlite_data Creating 
+ Network dockerhw-basics-1795359832-81264_default Creating 
+ Volume dockerhw-basics-1795359832-81264_sqlite_data Creating 
+ Network dockerhw-basics-1795359832-81264_default Creating 
+ Volume dockerhw-basics-1795359832-81264_sqlite_data Created 
+ Volume dockerhw-basics-1795359832-81264_sqlite_data Created 
+ Network dockerhw-basics-1795359832-81264_default Created 
+ Network dockerhw-basics-1795359832-81264_default Created 
+ Container dockerhw-basics-1795359832-81264-app-1 Creating 
+ Container dockerhw-basics-1795359832-81264-app-1 Created 
+ Container dockerhw-basics-1795359832-81264-app-1 Starting 
+ Container dockerhw-basics-1795359832-81264-app-1 Started 
+ Container dockerhw-basics-1795359832-81264-app-1 Waiting 
+ Container dockerhw-basics-1795359832-81264-app-1 Healthy 
+{'greeting': 'Compose SQLite check', 'count': 0, 'hostname': '8501bc565315', 'storage': 'sqlite'}
+{'greeting': 'Compose SQLite check', 'count': 1, 'hostname': '8501bc565315', 'storage': 'sqlite'}
+{'greeting': 'Compose SQLite check', 'count': 2, 'hostname': '8501bc565315', 'storage': 'sqlite'}
+{'greeting': 'Compose SQLite check', 'count': 3, 'hostname': '8501bc565315', 'storage': 'sqlite'}
+docker compose down (without -v), then up
+ Container dockerhw-basics-1795359832-81264-app-1 Stopping 
+ Container dockerhw-basics-1795359832-81264-app-1 Stopped 
+ Container dockerhw-basics-1795359832-81264-app-1 Removing 
+ Container dockerhw-basics-1795359832-81264-app-1 Removed 
+ Network dockerhw-basics-1795359832-81264_default Removing 
+ Network dockerhw-basics-1795359832-81264_default Removed 
+ Network dockerhw-basics-1795359832-81264_default Creating 
+ Network dockerhw-basics-1795359832-81264_default Creating 
+ Network dockerhw-basics-1795359832-81264_default Created 
+ Network dockerhw-basics-1795359832-81264_default Created 
+ Container dockerhw-basics-1795359832-81264-app-1 Creating 
+ Container dockerhw-basics-1795359832-81264-app-1 Created 
+ Container dockerhw-basics-1795359832-81264-app-1 Starting 
+ Container dockerhw-basics-1795359832-81264-app-1 Started 
+ Container dockerhw-basics-1795359832-81264-app-1 Waiting 
+ Container dockerhw-basics-1795359832-81264-app-1 Healthy 
+{'greeting': 'Compose SQLite check', 'count': 3, 'hostname': '02027c695997', 'storage': 'sqlite'}
+app-1  | 2026-11-22 15:04:22,391 listening port=8000 storage=sqlite
+app-1  | 2026-11-22 15:04:24,388 http 127.0.0.1 "GET /readyz HTTP/1.1" 200 -
+app-1  | 2026-11-22 15:04:24,827 http 172.18.0.1 "GET / HTTP/1.1" 200 -
+
+PASS: levels 4 and 6.
+ Container dockerhw-basics-1795359832-81264-app-1 Stopping 
+ Container dockerhw-basics-1795359832-81264-app-1 Stopped 
+ Container dockerhw-basics-1795359832-81264-app-1 Removing 
+ Container dockerhw-basics-1795359832-81264-app-1 Removed 
+ Network dockerhw-basics-1795359832-81264_default Removing 
+ Volume dockerhw-basics-1795359832-81264_sqlite_data Removing 
+ Volume dockerhw-basics-1795359832-81264_sqlite_data Removed 
+ Image dockerhw-basics-1795359832-81264-app:latest Removing 
+ Image dockerhw-basics-1795359832-81264-app:latest Removed 
+ Network dockerhw-basics-1795359832-81264_default Removed 
